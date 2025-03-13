@@ -1,0 +1,9 @@
+<%- include("../partials/header") %><body><link rel="stylesheet"href="/css/styles.css"><h1>Ajouter un livre</h1><% if (typeof errors !=='undefined'&& errors.length > 0) {
+  %><div class="error-messages"><ul><% errors.forEach(error=> {
+      %> <li><%=error %></li> <%
+    }
+
+  ) %></ul></div><%
+}
+
+%><form action="/books"method="POST"><label for="title">Titre</label><input type="text"name="title"id="title"value="<%= book ? book.title : '' %>"><label for="year">Année de publication</label><input type="number"name="year"id="year"value="<%= book ? book.year : '' %>"><label for="author">Auteur</label><input type="text"name="author"id="author"value="<%= book ? book.author : '' %>"><label for="summary">Résumé</label><input type="text"name="summary"id="summary"value="<%= book ? book.summary : '' %>"><button class="button_success"type="submit">Ajouter</button><a href="/books"class="button_cancel">Retour</a></form></body><%- include("../partials/footer") %>

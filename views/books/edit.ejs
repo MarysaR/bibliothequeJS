@@ -1,0 +1,17 @@
+<body>
+  <link rel="stylesheet" href="/css/styles.css">
+  <h1>Modifier <%= book.title %></h1>
+  <form action="/books/<%= book._id %>?_method=PUT" method="POST">
+      <label for="title">Titre :</label>
+      <input type="text" name="title" value="<%= book.title %>" required>
+      <label for="author">Auteur :</label>
+      <input type="text" name="author" value="<%= book.author %>" required>
+      <label for="year">Année :</label>
+      <input type="number" name="year" value="<%= book.year %>" required>
+      <label for="summary">Résumé :</label>
+      <textarea name="summary"><%= book.summary %></textarea>
+      <button type="submit">Modifier</button>
+      <button class="button_cancel" href="/books">Retour</button>
+  </form>
+
+</body>

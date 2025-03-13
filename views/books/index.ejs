@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<body>
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <%- include("../partials/header") %>
+
+
+    <h1>Liste des Livres</h1>
+    <form action="/books/new" method="GET" style="display:inline;">
+        <button class="button_success" type="submit">Ajouter un livre</button>
+    </form>
+    <ul>
+        <% books.forEach(book => { %>
+            <li>
+                <a href="/books/<%= book._id %>"><%= book.title %></a>
+                - <% if (book.author) { %> <%= book.author %> <% } else { %> Auteur inconnu <% } %>
+
+                <form action="/books/edit/<%= book._id %>" method="GET" style="display:inline;">
+                    <button class="button_success" type="submit">Modifier</button>
+                </form>
+ 
+                <form action="/books/<%= book._id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button class="button_delete" type="submit">Supprimer</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+
+
+    
+
+    <%- include("../partials/footer") %>
+</body>
+</html>
